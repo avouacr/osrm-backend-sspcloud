@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: osrm-backend
+spec:
+  rules:
+    - host: osrm-backend-dmtr.lab.sspcloud.fr
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: osrm-backend
+                port:
+                  number: 5000
+  tls:
+    - hosts:
+        - osrm-backend-dmtr.lab.sspcloud.fr
